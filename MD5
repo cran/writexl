@@ -1,8 +1,9 @@
-c729edb7a22a68811c45545a0119e6c9 *DESCRIPTION
+61f24cd0d726021005d71072a2c3fb2d *DESCRIPTION
 6a6ce210fb37034ed0308b48ddc90ed9 *LICENSE
-bc76183ca6dad70a04c78f837ef9960a *NAMESPACE
+c22b069594f5ad99320030a7e20fc405 *NAMESPACE
+6edeedd4e2eb5bbfe4f77005fddbccaa *NEWS
 737b6d239bec61b4b19e2e8b3b015a39 *R/version.R
-f372e8c2df828688acfae0a4eaeaef3f *R/write_xlsx.R
+5300c0127dbfd82ddda77286effa8691 *R/write_xlsx.R
 140af18107fff96197be0916c7435874 *inst/AUTHORS
 98161a8719a0d2bc357b70b7f0a6c371 *inst/COPYRIGHT
 88171d3764c108cae1c7e5e49fa8d1f8 *man/write_xlsx.Rd
@@ -55,7 +56,7 @@ e8a6cc43207a37d631d9e90bbec6e6ed *src/minizip/ioapi.c
 0f47c3f660e61edefb8d63b61d283e7f *src/minizip/zip.h
 17f364e145ac8d60a6daaaca224d1412 *src/tmpfileplus/tmpfileplus.c
 91ecc39f822ba460d99a451fec030cfa *src/tmpfileplus/tmpfileplus.h
-4231c0e84390530730ce0fd8ee9e3172 *src/write_xlsx.c
+3cd560037f278ac29e3f111d59600bfd *src/write_xlsx.c
 71190c953f4f20bb7683748096679dc4 *tests/testthat.R
 3d381fc8cde25ced4228141bac2c7ed3 *tests/testthat/test-performance.R
-2963444ac529f8eb8242b33123bcffb8 *tests/testthat/test-types.R
+547c40895202fb00aa707e6b2979c362 *tests/testthat/test-types.R
