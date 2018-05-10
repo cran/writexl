@@ -1,6 +1,7 @@
 #' Export to xlsx
 #'
-#' Writes a data frame to an xlsx file.
+#' Writes a data frame to an xlsx file. To create an xlsx with (multiple) named
+#' sheets, simply set \code{x} to a named list of data frames.
 #'
 #' Currently supports strings, numbers, booleans and dates. Formatting options
 #' may be added in future versions.
@@ -28,12 +29,13 @@ write_xlsx <- function(x, path = tempfile(fileext = ".xlsx"), col_names = TRUE){
   x <- lapply(x, normalize_df)
   stopifnot(is.character(path) && length(path))
   path <- normalizePath(path, mustWork = FALSE)
-  .Call(C_write_data_frame_list, x, path, col_names)
+  ret <- .Call(C_write_data_frame_list, x, path, col_names)
+  invisible(ret)
 }
 
 normalize_df <- function(df){
   # Types to coerce to strings
-  for(i in which(vapply(df, inherits, logical(1), c("Date", "factor", "hms")))){
+  for(i in which(vapply(df, inherits, logical(1), c("factor", "hms")))){
     df[[i]] <- as.character(df[[i]])
   }
   for(i in which(vapply(df, inherits, logical(1), "POSIXlt"))){

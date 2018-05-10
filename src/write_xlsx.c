@@ -7,11 +7,14 @@
 #include <xlsxwriter.h>
 
 typedef enum {
-  COL_LOGCIAL,
+  COL_LOGICAL,
   COL_REAL,
   COL_INTEGER,
   COL_STRING,
+  COL_DATE,
   COL_POSIXCT,
+  COL_HYPERLINK,
+  COL_FORMULA,
   COL_BLANK,
   COL_UNKNOWN
 } R_COL_TYPE;
@@ -22,7 +25,7 @@ typedef enum {
 
 static void bail_if(int check, const char * error){
   if(check)
-    Rf_error("Error %s", error);
+    Rf_errorcall(R_NilValue, "Error in writexl: %s", error);
 }
 
 static void assert_lxw(lxw_error err){
@@ -31,8 +34,14 @@ static void assert_lxw(lxw_error err){
 }
 
 static R_COL_TYPE get_type(SEXP col){
+  if(Rf_inherits(col, "Date"))
+    return COL_DATE;
   if(Rf_inherits(col, "POSIXct"))
     return COL_POSIXCT;
+  if(Rf_inherits(col, "xl_hyperlink"))
+    return COL_HYPERLINK;
+  if(Rf_isString(col) && Rf_inherits(col, "xl_formula"))
+    return COL_FORMULA;
   switch(TYPEOF(col)){
   case STRSXP:
     return COL_STRING;
@@ -41,7 +50,7 @@ static R_COL_TYPE get_type(SEXP col){
   case REALSXP:
     return COL_REAL;
   case LGLSXP:
-    return COL_LOGCIAL;
+    return COL_LOGICAL;
   default:
     return COL_UNKNOWN;
   };
@@ -68,12 +77,21 @@ attribute_visible SEXP C_write_data_frame_list(SEXP df_list, SEXP file, SEXP col
 
   //how to format dates
   lxw_format * date = workbook_add_format(workbook);
-  format_set_num_format(date, "yyyy-mm-dd HH:mm:ss UTC");
+  format_set_num_format(date, "yyyy-mm-dd");
+
+  //how to format timetamps
+  lxw_format * datetime = workbook_add_format(workbook);
+  format_set_num_format(datetime, "yyyy-mm-dd HH:mm:ss UTC");
 
   //how to format headers (bold + center)
   lxw_format * title = workbook_add_format(workbook);
   format_set_bold(title);
   format_set_align(title, LXW_ALIGN_CENTER);
+
+  //how to format hyperlinks (underline + blue)
+  lxw_format * hyperlink = workbook_add_format(workbook);
+  format_set_underline(hyperlink, LXW_UNDERLINE_SINGLE);
+  format_set_font_color(hyperlink, LXW_COLOR_BLUE);
 
   //iterate over sheets
   SEXP df_names = PROTECT(Rf_getAttrib(df_list, R_NamesSymbol));
@@ -111,8 +129,10 @@ attribute_visible SEXP C_write_data_frame_list(SEXP df_list, SEXP file, SEXP col
       coltypes[i] = get_type(COL);
       if(!Rf_isMatrix(COL) && !Rf_inherits(COL, "data.frame"))
         rows = max(rows, Rf_length(COL));
-      if(coltypes[i] == COL_POSIXCT)
+      if(coltypes[i] == COL_DATE)
         assert_lxw(worksheet_set_column(sheet, i, i, 20, date));
+      if(coltypes[i] == COL_POSIXCT)
+        assert_lxw(worksheet_set_column(sheet, i, i, 20, datetime));
     }
 
     // Need to iterate by row first for performance
@@ -120,6 +140,11 @@ attribute_visible SEXP C_write_data_frame_list(SEXP df_list, SEXP file, SEXP col
       for(size_t j = 0; j < cols; j++){
         SEXP col = VECTOR_ELT(df, j);
         switch(coltypes[j]){
+        case COL_DATE:{
+          double val = Rf_isReal(col) ? REAL(col)[i] : INTEGER(col)[i];
+          if(Rf_isReal(col) ? R_FINITE(val) : val != NA_INTEGER)
+            assert_lxw(worksheet_write_number(sheet, cursor, j, 25569 + val, NULL));
+        }; continue;
         case COL_POSIXCT: {
           double val = REAL(col)[i];
           if(R_FINITE(val))
@@ -131,6 +156,20 @@ attribute_visible SEXP C_write_data_frame_list(SEXP df_list, SEXP file, SEXP col
             assert_lxw(worksheet_write_string(sheet, cursor, j, Rf_translateCharUTF8(val), NULL));
           else  // xlsx does string not supported it seems?
             assert_lxw(worksheet_write_string(sheet, cursor, j, " ", NULL));
+        }; continue;
+        case COL_FORMULA:{
+          SEXP val = STRING_ELT(col, i);
+          if(val != NA_STRING && Rf_length(val))
+            assert_lxw(worksheet_write_formula(sheet, cursor, j, Rf_translateCharUTF8(val), NULL));
+          else
+            assert_lxw(worksheet_write_formula(sheet, cursor, j, " ", NULL));
+        }; continue;
+        case COL_HYPERLINK:{
+          SEXP val = STRING_ELT(col, i);
+          if(val != NA_STRING && Rf_length(val))
+            assert_lxw(worksheet_write_formula(sheet, cursor, j, Rf_translateCharUTF8(val), hyperlink));
+          else
+            assert_lxw(worksheet_write_formula(sheet, cursor, j, " ", NULL));
         }; continue;
         case COL_REAL:{
           double val = REAL(col)[i];
@@ -146,7 +185,7 @@ attribute_visible SEXP C_write_data_frame_list(SEXP df_list, SEXP file, SEXP col
           if(val != NA_INTEGER)
             assert_lxw(worksheet_write_number(sheet, cursor, j, val, NULL));
         }; continue;
-        case COL_LOGCIAL:{
+        case COL_LOGICAL:{
           int val = LOGICAL(col)[i];
           if(val != NA_LOGICAL)
             assert_lxw(worksheet_write_boolean(sheet, cursor, j, val, NULL));
