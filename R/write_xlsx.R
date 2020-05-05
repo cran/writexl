@@ -19,19 +19,30 @@
 #' @param path a file name to write to
 #' @param col_names write column names at the top of the file?
 #' @param format_headers make the \code{col_names} in the xlsx centered and bold
+#' @param use_zip64 use \href{https://en.wikipedia.org/wiki/Zip_(file_format)#ZIP64}{zip64}
+#' to enable support for 4GB+ xlsx files. Not all platforms can read this.
 #' @examples # Roundtrip example with single excel sheet named 'mysheet'
 #' tmp <- write_xlsx(list(mysheet = iris))
 #' readxl::read_xlsx(tmp)
 write_xlsx <- function(x, path = tempfile(fileext = ".xlsx"), col_names = TRUE,
-                       format_headers = TRUE){
+                       format_headers = TRUE, use_zip64 = FALSE){
   if(is.data.frame(x))
     x <- list(x)
   if(!is.list(x) || !all(vapply(x, is.data.frame, logical(1))))
     stop("Argument x must be a data frame or list of data frames")
   x <- lapply(x, normalize_df)
+  if(any(nchar(names(x)) > 31)){
+    warning("Truncating sheet name(s) to 31 characters")
+    names(x) <- substring(names(x), 1, 29)
+  }
+  nm <- names(x)
+  if(length(unique(nm)) <  length(nm)){
+    warning("Deduplicating sheet names")
+    names(x) <- make.unique(substring(names(x), 1, 28), sep = "_")
+  }
   stopifnot(is.character(path) && length(path))
   path <- normalizePath(path, mustWork = FALSE)
-  ret <- .Call(C_write_data_frame_list, x, path, col_names, format_headers)
+  ret <- .Call(C_write_data_frame_list, x, path, col_names, format_headers, use_zip64)
   invisible(ret)
 }
 

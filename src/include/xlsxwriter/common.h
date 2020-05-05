@@ -19,6 +19,9 @@
 #include "third_party/queue.h"
 #include "third_party/tree.h"
 
+void REprintf(const char *, ...);
+
+
 #ifndef TESTING
 #define STATIC static
 #else
@@ -215,7 +218,7 @@ enum lxw_custom_property_types {
 #define LXW_SCHEMA_CONTENT   LXW_SCHEMA_ROOT "/package/2006/content-types"
 
 #define LXW_ERROR(message)                      \
-    fprintf(stderr, "[ERROR][%s:%d]: " message "\n", __FILE__, __LINE__)
+    REprintf("[ERROR][%s:%d]: " message "\n", __FILE__, __LINE__)
 
 #define LXW_MEM_ERROR()                         \
     LXW_ERROR("Memory allocation failed.")
@@ -243,17 +246,17 @@ enum lxw_custom_property_types {
         return error;
 
 #define LXW_WARN(message)                       \
-    fprintf(stderr, "[WARNING]: " message "\n")
+    REprintf("[WARNING]: " message "\n")
 
 /* We can't use variadic macros here since we support ANSI C. */
 #define LXW_WARN_FORMAT(message)                \
-    fprintf(stderr, "[WARNING]: " message "\n")
+    REprintf("[WARNING]: " message "\n")
 
 #define LXW_WARN_FORMAT1(message, var)          \
-    fprintf(stderr, "[WARNING]: " message "\n", var)
+    REprintf("[WARNING]: " message "\n", var)
 
 #define LXW_WARN_FORMAT2(message, var1, var2)    \
-    fprintf(stderr, "[WARNING]: " message "\n", var1, var2)
+    REprintf("[WARNING]: " message "\n", var1, var2)
 
 /* Chart axis type checks. */
 #define LXW_WARN_CAT_AXIS_ONLY(function)                                   \
