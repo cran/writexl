@@ -1,7 +1,7 @@
-2f43446ee85079cb5e680e27a7f3b0ce *DESCRIPTION
+148d9d8f6e7ce066979f12a1f1e5d79f *DESCRIPTION
 1ee0683cce6d3479250337954c075d63 *LICENSE
 90b3275c0bf168216e46188c580c1830 *NAMESPACE
-bdd9825ef50c8985dce2e5691c3b3545 *NEWS
+6eee6277e68536569c6893a21bcbf380 *NEWS
 64565fbf5e6d3a999d0b1a2e3a916b3f *R/excel_types.R
 737b6d239bec61b4b19e2e8b3b015a39 *R/version.R
 56111c0da6aef5fafa8b26abcf7fb37a *R/write_xlsx.R
@@ -65,4 +65,4 @@ f76f829266c0a2c3bbb20f4072f8b8a1 *src/write_xlsx.c
 bc882e5235bfdccc9e49f99290365b40 *tests/spelling.R
 71190c953f4f20bb7683748096679dc4 *tests/testthat.R
 f593ee0b058391fe787bf07f62604ef2 *tests/testthat/test-performance.R
-cf235527d0c8189277ed8abf8a623281 *tests/testthat/test-types.R
+f7ed43304acb6af25f548ba738349064 *tests/testthat/test-types.R
