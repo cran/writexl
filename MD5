@@ -1,7 +1,7 @@
-eb7013b577d2b3def95afcc6f161ee46 *DESCRIPTION
+2c306799bff302ba4d91bc605d4d5316 *DESCRIPTION
 1ee0683cce6d3479250337954c075d63 *LICENSE
 90b3275c0bf168216e46188c580c1830 *NAMESPACE
-49f5f8a6cc8033c26c93b47b395622d3 *NEWS
+35b0418da3c5cb79affe35a469bd7800 *NEWS
 64565fbf5e6d3a999d0b1a2e3a916b3f *R/excel_types.R
 737b6d239bec61b4b19e2e8b3b015a39 *R/version.R
 56111c0da6aef5fafa8b26abcf7fb37a *R/write_xlsx.R
@@ -62,13 +62,13 @@ b4417372d140c12f7993b9da87188bf0 *src/libxlsxwriter/worksheet.c
 cf40a4cf147e96c68ec7bd4cec6be4b4 *src/libxlsxwriter/xmlwriter.c
 8b44f9871d09d414b3d18f64fc133e7b *src/md5/md5.c
 0540d079aa31f63f9a716bbb9b5ee4b2 *src/md5/md5.h
-5960f0b3f3933d8a5f466e9ca36bb756 *src/minizip/ioapi.c
+831ccc0e0d97e70d002b7370c9f3e863 *src/minizip/ioapi.c
 bfd0d569e76d5d6ca84f50983227b2d3 *src/minizip/ioapi.h
-1f80823cd07573d68a9c7470a790a7fc *src/minizip/zip.c
+27cf391041a54d04d0c5c1a37a0c6c34 *src/minizip/zip.c
 f6e837ae4769d683fa51d651a232ece0 *src/minizip/zip.h
 636907d331156d62e8e750411db3a87b *src/tmpfileplus/tmpfileplus.c
 91ecc39f822ba460d99a451fec030cfa *src/tmpfileplus/tmpfileplus.h
-f76f829266c0a2c3bbb20f4072f8b8a1 *src/write_xlsx.c
+330edeb9e114c47f2725a810d98ec0d2 *src/write_xlsx.c
 bc882e5235bfdccc9e49f99290365b40 *tests/spelling.R
 71190c953f4f20bb7683748096679dc4 *tests/testthat.R
 f593ee0b058391fe787bf07f62604ef2 *tests/testthat/test-performance.R
