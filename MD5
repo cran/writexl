@@ -1,7 +1,7 @@
-2c306799bff302ba4d91bc605d4d5316 *DESCRIPTION
+5bcfdfca14575246208502bc88338272 *DESCRIPTION
 1ee0683cce6d3479250337954c075d63 *LICENSE
 90b3275c0bf168216e46188c580c1830 *NAMESPACE
-35b0418da3c5cb79affe35a469bd7800 *NEWS
+ae33ab658b94eff5bc22e979022c22c7 *NEWS
 64565fbf5e6d3a999d0b1a2e3a916b3f *R/excel_types.R
 737b6d239bec61b4b19e2e8b3b015a39 *R/version.R
 56111c0da6aef5fafa8b26abcf7fb37a *R/write_xlsx.R
@@ -68,7 +68,7 @@ bfd0d569e76d5d6ca84f50983227b2d3 *src/minizip/ioapi.h
 f6e837ae4769d683fa51d651a232ece0 *src/minizip/zip.h
 636907d331156d62e8e750411db3a87b *src/tmpfileplus/tmpfileplus.c
 91ecc39f822ba460d99a451fec030cfa *src/tmpfileplus/tmpfileplus.h
-330edeb9e114c47f2725a810d98ec0d2 *src/write_xlsx.c
+300f7fc9d58721c94793adf9e97098d6 *src/write_xlsx.c
 bc882e5235bfdccc9e49f99290365b40 *tests/spelling.R
 71190c953f4f20bb7683748096679dc4 *tests/testthat.R
 f593ee0b058391fe787bf07f62604ef2 *tests/testthat/test-performance.R
