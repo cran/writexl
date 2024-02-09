@@ -47,9 +47,15 @@ write_xlsx <- function(x, path = tempfile(fileext = ".xlsx"), col_names = TRUE,
 }
 
 normalize_df <- function(df){
+  if(nrow(df) > 1024^2){
+    stop("the xlsx format does not support tables with 1M+ rows")
+  }
   # Types to coerce to strings
   for(i in which(vapply(df, inherits, logical(1), c("factor", "hms")))){
     df[[i]] <- as.character(df[[i]])
+  }
+  for(i in which(vapply(df, function(x){is.integer(x) && inherits(x, "POSIXct")}, logical(1)))){
+    df[[i]] <- as.POSIXct(as.double(df[[i]]))
   }
   for(i in which(vapply(df, inherits, logical(1), "POSIXlt"))){
     df[[i]] <- as.POSIXct(df[[i]])

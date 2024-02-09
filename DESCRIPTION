@@ -1,7 +1,7 @@
 Package: writexl
 Type: Package
 Title: Export Data Frames to Excel 'xlsx' Format
-Version: 1.4.2
+Version: 1.5.0
 Authors@R: c(
     person("Jeroen", "Ooms", ,"jeroen@berkeley.edu", role = c("aut", "cre"),
       comment = c(ORCID = "0000-0002-4035-0289")),
@@ -18,11 +18,12 @@ BugReports: https://github.com/ropensci/writexl/issues
 RoxygenNote: 7.0.2
 Suggests: spelling, readxl, nycflights13, testthat, bit64
 Language: en-US
+SystemRequirements: zlib
 NeedsCompilation: yes
-Packaged: 2023-01-06 17:19:16 UTC; jeroen
+Packaged: 2024-02-09 14:40:26 UTC; jeroen
 Author: Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>),
   John McNamara [cph] (Author of libxlsxwriter (see AUTHORS and COPYRIGHT
     files for details))
 Maintainer: Jeroen Ooms <jeroen@berkeley.edu>
 Repository: CRAN
-Date/Publication: 2023-01-06 22:30:01 UTC
+Date/Publication: 2024-02-09 15:50:02 UTC
