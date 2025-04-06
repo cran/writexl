@@ -1,7 +1,7 @@
-b01873e09579d9f3c07231c779b65af0 *DESCRIPTION
+d656ccacf37dd8bf5fe89e8024d3e1a4 *DESCRIPTION
 1ee0683cce6d3479250337954c075d63 *LICENSE
 90b3275c0bf168216e46188c580c1830 *NAMESPACE
-e3c346df734133dc4fc4f192f1f76bde *NEWS
+79133742d295bd7b7b6cbd3390cfdffb *NEWS
 64565fbf5e6d3a999d0b1a2e3a916b3f *R/excel_types.R
 737b6d239bec61b4b19e2e8b3b015a39 *R/version.R
 bb2947c21d98f2cce4f1c4acc7dffce8 *R/write_xlsx.R
@@ -11,7 +11,7 @@ ee7896b1dfafac481ebdf4d546fff4df *inst/WORDLIST
 5d6cd0aede82ee5950a2fc383d41f6ef *man/write_xlsx.Rd
 12ee667a4a5b48eff478e33b3aed6871 *man/writexl.Rd
 ca36be80c0269ac56ba7dcf8bcc92553 *man/xl_formula.Rd
-f8dfd99994dfba815561a2dbb6cfad9c *src/Makevars
+47bec17bdb65c6356541ca8775853299 *src/Makevars
 31a7709e2db76fe96b0882140c0b4c38 *src/include/xlsxwriter.h
 10b5c3a7a260f6f743083781efd7700b *src/include/xlsxwriter/app.h
 c20fb1f17597f5bf83f64439781e4b37 *src/include/xlsxwriter/chart.h
@@ -72,7 +72,7 @@ a4cd12f5732089282c851dc83ec7c100 *src/libxlsxwriter/workbook.c
 6dc6de0874d78350319224058bf1ab51 *src/minizip/zip.h
 636907d331156d62e8e750411db3a87b *src/tmpfileplus/tmpfileplus.c
 91ecc39f822ba460d99a451fec030cfa *src/tmpfileplus/tmpfileplus.h
-300f7fc9d58721c94793adf9e97098d6 *src/write_xlsx.c
+41da93dfc450516f22981a65d8165a60 *src/write_xlsx.c
 bc882e5235bfdccc9e49f99290365b40 *tests/spelling.R
 71190c953f4f20bb7683748096679dc4 *tests/testthat.R
 f593ee0b058391fe787bf07f62604ef2 *tests/testthat/test-performance.R
