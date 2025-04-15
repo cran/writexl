@@ -1,7 +1,7 @@
-d656ccacf37dd8bf5fe89e8024d3e1a4 *DESCRIPTION
+83d9490919091c57b1b2c611af7da650 *DESCRIPTION
 1ee0683cce6d3479250337954c075d63 *LICENSE
 90b3275c0bf168216e46188c580c1830 *NAMESPACE
-79133742d295bd7b7b6cbd3390cfdffb *NEWS
+5045f8a11b88702ea5f39d98f0a9cfed *NEWS
 64565fbf5e6d3a999d0b1a2e3a916b3f *R/excel_types.R
 737b6d239bec61b4b19e2e8b3b015a39 *R/version.R
 bb2947c21d98f2cce4f1c4acc7dffce8 *R/write_xlsx.R
@@ -11,7 +11,7 @@ ee7896b1dfafac481ebdf4d546fff4df *inst/WORDLIST
 5d6cd0aede82ee5950a2fc383d41f6ef *man/write_xlsx.Rd
 12ee667a4a5b48eff478e33b3aed6871 *man/writexl.Rd
 ca36be80c0269ac56ba7dcf8bcc92553 *man/xl_formula.Rd
-47bec17bdb65c6356541ca8775853299 *src/Makevars
+ec3a1e53e51c81d8632ebcd2f594ca80 *src/Makevars
 31a7709e2db76fe96b0882140c0b4c38 *src/include/xlsxwriter.h
 10b5c3a7a260f6f743083781efd7700b *src/include/xlsxwriter/app.h
 c20fb1f17597f5bf83f64439781e4b37 *src/include/xlsxwriter/chart.h
